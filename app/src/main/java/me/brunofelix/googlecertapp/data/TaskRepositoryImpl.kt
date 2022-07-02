@@ -11,10 +11,6 @@ class TaskRepositoryImpl constructor(
         return dao.insert(task)
     }
 
-    override suspend fun update(task: Task) {
-        dao.update(task)
-    }
-
     override suspend fun delete(task: Task) {
         dao.delete(task)
     }
