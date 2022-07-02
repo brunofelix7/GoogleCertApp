@@ -1,5 +1,6 @@
 package me.brunofelix.googlecertapp.ui.tasklist
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -15,6 +16,7 @@ import me.brunofelix.googlecertapp.data.Task
 import me.brunofelix.googlecertapp.data.TaskRepositoryImpl
 import me.brunofelix.googlecertapp.databinding.ActivityTaskListBinding
 import me.brunofelix.googlecertapp.extensions.toast
+import me.brunofelix.googlecertapp.ui.taskadd.TaskAddActivity
 import me.brunofelix.googlecertapp.ui.tasklist.paging.ItemLoadStateAdapter
 import me.brunofelix.googlecertapp.utils.AppProvider
 import me.brunofelix.googlecertapp.utils.JsonReader.getDataFromJson
@@ -31,7 +33,6 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
         initUI()
         initObjects()
         observeData()
-        fillDatabase()
         adapterConfig()
     }
 
@@ -42,7 +43,7 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
         setContentView(binding.root)
 
         binding.fab.setOnClickListener {
-            Timber.d("Fab click")
+            startActivity(Intent(this, TaskAddActivity::class.java))
         }
 
         binding.toolbar.inflateMenu(R.menu.toolbar_menu)
@@ -70,7 +71,9 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
         val factory = TaskListViewModelFactory(repository, Dispatchers.IO, provider)
 
         adapter = TaskListAdapter()
+
         viewModel = ViewModelProvider(this, factory)[TaskListViewModel::class.java]
+        viewModel.createInitialTasks()
     }
 
     private fun observeData() {
@@ -102,22 +105,6 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
             errorState?.let {
                 toast("\uD83D\uDE28 Oops! ${it.error}")
             }
-        }
-    }
-
-    private fun fillDatabase() {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-
-        if (prefs.getBoolean(getString(R.string.pref_is_db_empty), true)) {
-            prefs.edit().apply {
-                putBoolean(getString(R.string.pref_is_db_empty), false)
-                apply()
-            }
-            for (task in getDataFromJson(this)) {
-                viewModel.addTask(task)
-            }
-        } else {
-            observeData()
         }
     }
 

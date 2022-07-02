@@ -15,6 +15,9 @@
         android:theme="@style/ThemeGoogleCertApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.taskadd.TaskAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.tasklist.TaskListActivity"
             android:exported="true">
             <intent-filter>

@@ -1,21 +1,19 @@
 package me.brunofelix.googlecertapp.ui.tasklist
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.preference.PreferenceManager
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import me.brunofelix.googlecertapp.R
 import me.brunofelix.googlecertapp.data.Task
 import me.brunofelix.googlecertapp.data.TaskRepository
-import me.brunofelix.googlecertapp.utils.AppConstants
 import me.brunofelix.googlecertapp.utils.AppProvider
+import me.brunofelix.googlecertapp.utils.JsonReader
 
 class TaskListViewModel constructor(
     private val repository: TaskRepository,
@@ -23,20 +21,17 @@ class TaskListViewModel constructor(
     private val provider: AppProvider
 ) : ViewModel() {
 
-    private val _liveData = MutableLiveData<TaskListUiState>()
-    val liveData: LiveData<TaskListUiState> get() = _liveData
-
-    fun addTask(task: Task) {
-        _liveData.value = TaskListUiState.Loading
-
+    fun createInitialTasks() {
         viewModelScope.launch(dispatcher) {
-            if (repository.insert(task) > 0) {
-                withContext(Dispatchers.Main) {
-                    _liveData.value = TaskListUiState.Success(AppConstants.SUCCESS_ADD)
+            val prefs = PreferenceManager.getDefaultSharedPreferences(provider.context())
+
+            if (prefs.getBoolean(provider.res().getString(R.string.pref_is_db_empty), true)) {
+                prefs.edit().apply {
+                    putBoolean(provider.res().getString(R.string.pref_is_db_empty), false)
+                    apply()
                 }
-            } else {
-                withContext(Dispatchers.Main) {
-                    _liveData.value = TaskListUiState.Error(AppConstants.GENERIC_ERROR)
+                for (task in JsonReader.getDataFromJson(provider.context())) {
+                    repository.insert(task)
                 }
             }
         }
