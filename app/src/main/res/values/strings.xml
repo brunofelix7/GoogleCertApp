@@ -1,7 +1,17 @@
 <resources>
     <!-- TODO: App name -->
-    <string name="app_name">GoogleCertApp</string>
+    <string name="app_name">Google Android Certification</string>
 
     <!-- TODO: Preferences keys -->
     <string name="pref_is_db_empty">key_is_db_empty</string>
+
+    <!-- TODO: Toolbar menu -->
+    <string name="title_action_filter">Sort by</string>
+    <string name="title_action_settings">Settings</string>
+
+    <!-- TODO: MainActivity texts -->
+    <string name="txt_btn_retry">Retry</string>
+
+    <!-- TODO: Accessibility -->
+    <string name="float_add">Float add</string>
 </resources>

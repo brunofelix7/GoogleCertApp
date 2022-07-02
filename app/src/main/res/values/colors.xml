@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Night colors -->
+    <color name="night_primary">#FF121212</color> <!-- FF2A3251 -->
+    <color name="night_secondary">#FF1F1F1F</color> <!-- FF384366 -->
+
+    <!-- Light colors -->
+    <color name="light_primary">#FFF2F2F2</color>
+    <color name="light_text">#FF969696</color>
 </resources>
