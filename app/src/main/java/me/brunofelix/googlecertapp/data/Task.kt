@@ -17,5 +17,5 @@ data class Task(
     val name: String,
 
     @ColumnInfo(name = "state")
-    val state: String,
+    val state: String = TaskEnum.TODO.name,
 ) : Parcelable

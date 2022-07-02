@@ -1,0 +1,14 @@
+{
+  "tasks": [
+    {
+      "id": 0,
+      "name": "Make the dinner",
+      "state": "TODO"
+    },
+    {
+      "id": 0,
+      "name": "Do the dishes",
+      "state": "TODO"
+    }
+  ]
+}
