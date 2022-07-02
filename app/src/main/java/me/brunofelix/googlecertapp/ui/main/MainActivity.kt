@@ -1,7 +1,8 @@
-package me.brunofelix.googlecertapp
+package me.brunofelix.googlecertapp.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import me.brunofelix.googlecertapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
