@@ -6,6 +6,7 @@
     <string name="pref_is_db_empty">key_is_db_empty</string>
 
     <!-- TODO: Toolbar menu -->
+    <string name="title_action_search">Search</string>
     <string name="title_action_filter">Sort by</string>
     <string name="title_action_settings">Settings</string>
 

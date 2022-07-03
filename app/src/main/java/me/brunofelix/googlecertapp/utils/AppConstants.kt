@@ -7,7 +7,7 @@ object AppConstants {
     const val PATTERN_H_MM_A = "h:mm a"
 
     //  TODO: Messages
-    const val FORM_SUBMIT_ERROR = "Fields are required"
+    const val FORM_SUBMIT_ERROR = "Field is required"
     const val UNKNOWN_ERROR: String = "Unknown"
     const val GENERIC_ERROR: String = "Oops! Try again"
     const val NOT_FOUND_ERROR: String = "Not found"

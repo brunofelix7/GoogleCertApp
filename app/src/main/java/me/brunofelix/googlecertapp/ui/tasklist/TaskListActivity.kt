@@ -7,7 +7,6 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.preference.PreferenceManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import me.brunofelix.googlecertapp.R
@@ -19,7 +18,6 @@ import me.brunofelix.googlecertapp.extensions.toast
 import me.brunofelix.googlecertapp.ui.taskadd.TaskAddActivity
 import me.brunofelix.googlecertapp.ui.tasklist.paging.ItemLoadStateAdapter
 import me.brunofelix.googlecertapp.utils.AppProvider
-import me.brunofelix.googlecertapp.utils.JsonReader.getDataFromJson
 import timber.log.Timber
 
 class TaskListActivity : AppCompatActivity(), TaskListClickListener {
@@ -46,10 +44,14 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
             startActivity(Intent(this, TaskAddActivity::class.java))
         }
 
-        binding.toolbar.inflateMenu(R.menu.toolbar_menu)
+        binding.toolbar.inflateMenu(R.menu.main_menu)
 
         binding.toolbar.setOnMenuItemClickListener { item ->
             when(item.itemId) {
+                R.id.action_search -> {
+                    Timber.d("Search item click")
+                    true
+                }
                 R.id.action_sort -> {
                     Timber.d("Sort by item click")
                     true

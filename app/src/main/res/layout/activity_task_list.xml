@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:elevation="16dp"
             app:title="@string/app_name"
+            app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Body1"
             app:titleTextColor="?android:titleTextColor" />
 
     </com.google.android.material.appbar.AppBarLayout>
