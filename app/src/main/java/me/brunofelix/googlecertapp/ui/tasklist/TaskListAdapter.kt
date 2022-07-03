@@ -45,6 +45,8 @@ class TaskListAdapter : PagingDataAdapter<Task, TaskListAdapter.TaskListViewHold
 
         fun bind(task: Task) {
             binding.tvName.text = task.name
+            binding.tvState.text = task.state
+            binding.tvDate.text = "2022-07-03"
             binding.layoutRoot.setOnClickListener {
                 listener?.onTaskClick(task)
             }
