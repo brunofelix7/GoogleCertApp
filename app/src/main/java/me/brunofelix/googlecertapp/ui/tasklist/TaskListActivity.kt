@@ -18,7 +18,9 @@ import me.brunofelix.googlecertapp.data.TaskRepositoryImpl
 import me.brunofelix.googlecertapp.databinding.ActivityTaskListBinding
 import me.brunofelix.googlecertapp.extensions.toast
 import me.brunofelix.googlecertapp.ui.taskadd.TaskAddActivity
+import me.brunofelix.googlecertapp.ui.taskdetails.TaskDetailsActivity
 import me.brunofelix.googlecertapp.ui.tasklist.paging.ItemLoadStateAdapter
+import me.brunofelix.googlecertapp.utils.AppConstants
 import me.brunofelix.googlecertapp.utils.AppProvider
 import timber.log.Timber
 
@@ -138,7 +140,10 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
         }
     }
 
-    override fun onTaskClick(task: Task) {
-        Timber.d(task.name)
+    override fun onTaskClick(id: Long) {
+        val intent = Intent(this, TaskDetailsActivity::class.java)
+
+        intent.putExtra(AppConstants.TASK_ID, id)
+        startActivity(intent)
     }
 }

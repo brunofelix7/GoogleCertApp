@@ -9,6 +9,7 @@
     <string name="title_action_search">Search</string>
     <string name="title_action_filter">Sort by</string>
     <string name="title_action_settings">Settings</string>
+    <string name="title_action_delete">Delete</string>
 
     <!-- TODO: Drawer menu -->
     <string name="nav_drawer_open">Open navigation drawer</string>
@@ -19,7 +20,21 @@
 
     <!-- TODO: TaskAddActivity texts -->
     <string name="add_task">Add new task</string>
+    <string name="name">Task name</string>
     <string name="save">Save</string>
+
+    <!-- TODO: TaskAddActivity texts -->
+    <string name="state">State</string>
+    <string name="update">Update</string>
+
+    <!-- TODO: Dialogs -->
+    <string name="btn_dialog_ok">OK</string>
+    <string name="btn_dialog_cancel">Cancel</string>
+    <string name="btn_dialog_yes">Yes</string>
+    <string name="btn_dialog_no">No</string>
+    <string name="title_dialog_sort_by">Sort by?</string>
+    <string name="title_dialog_delete">Delete task</string>
+    <string name="msg_dialog_delete">Are you sure you want to delete %s?</string>
 
     <!-- TODO: Accessibility -->
     <string name="float_add">Float add</string>
