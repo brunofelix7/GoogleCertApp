@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import me.brunofelix.googlecertapp.R
 import me.brunofelix.googlecertapp.data.Task
+import me.brunofelix.googlecertapp.data.TaskOrderByEnum
 import me.brunofelix.googlecertapp.data.TaskRepository
 import me.brunofelix.googlecertapp.utils.AppProvider
 import me.brunofelix.googlecertapp.utils.JsonReader
@@ -37,7 +38,7 @@ class TaskListViewModel constructor(
         }
     }
 
-    fun findAll(sortBy: String?): Flow<PagingData<Task>> {
+    fun findAll(sortBy: TaskOrderByEnum?): Flow<PagingData<Task>> {
         return Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
             val query = repository.createQuery(sortBy)
             repository.findAll(query)

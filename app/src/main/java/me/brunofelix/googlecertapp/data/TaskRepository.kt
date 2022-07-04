@@ -13,5 +13,5 @@ interface TaskRepository {
 
     fun findAll(query: SupportSQLiteQuery): PagingSource<Int, Task>
 
-    fun createQuery(sortBy: String?): SupportSQLiteQuery
+    fun createQuery(orderBy: TaskOrderByEnum?): SupportSQLiteQuery
 }

@@ -21,11 +21,15 @@ class TaskRepositoryImpl constructor(
 
     override fun findAll(query: SupportSQLiteQuery) = dao.findAll(query)
 
-    override fun createQuery(sortBy: String?): SupportSQLiteQuery {
+    override fun createQuery(orderBy: TaskOrderByEnum?): SupportSQLiteQuery {
         val defaultQuery = StringBuilder("SELECT * FROM task")
 
-        when (sortBy) {
-            "name" -> defaultQuery.append(" ORDER BY name ASC")
+        when (orderBy) {
+            TaskOrderByEnum.NAME_ASC -> defaultQuery.append(" ORDER BY name ASC")
+            TaskOrderByEnum.NAME_DESC -> defaultQuery.append(" ORDER BY name DESC")
+            TaskOrderByEnum.DATE_ASC -> defaultQuery.append(" ORDER BY date ASC")
+            TaskOrderByEnum.DATE_DESC -> defaultQuery.append(" ORDER BY date DESC")
+            else -> Unit
         }
         return SimpleSQLiteQuery(defaultQuery.toString())
     }

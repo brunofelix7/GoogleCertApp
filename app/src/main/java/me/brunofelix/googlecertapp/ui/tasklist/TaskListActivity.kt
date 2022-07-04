@@ -2,6 +2,7 @@ package me.brunofelix.googlecertapp.ui.tasklist
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -9,11 +10,13 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import me.brunofelix.googlecertapp.R
 import me.brunofelix.googlecertapp.data.AppDatabase
 import me.brunofelix.googlecertapp.data.Task
+import me.brunofelix.googlecertapp.data.TaskOrderByEnum
 import me.brunofelix.googlecertapp.data.TaskRepositoryImpl
 import me.brunofelix.googlecertapp.databinding.ActivityTaskListBinding
 import me.brunofelix.googlecertapp.extensions.toast
@@ -34,7 +37,7 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
         super.onCreate(savedInstanceState)
         initUI()
         initObjects()
-        observeData()
+        observeData(null)
         adapterConfig()
     }
 
@@ -57,7 +60,7 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
                     true
                 }
                 R.id.action_sort -> {
-                    Timber.d("Sort by item click")
+                    sheetsDialogSetup()
                     true
                 }
                 R.id.action_settings -> {
@@ -108,9 +111,9 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
         viewModel.createInitialTasks()
     }
 
-    private fun observeData() {
+    private fun observeData(orderBy: TaskOrderByEnum?) {
         lifecycleScope.launch {
-            viewModel.findAll("name").collect {
+            viewModel.findAll(orderBy).collect {
                 adapter.submitData(it)
             }
         }
@@ -145,5 +148,34 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
 
         intent.putExtra(AppConstants.TASK_ID, id)
         startActivity(intent)
+    }
+
+    private fun sheetsDialogSetup() {
+        val dialog = BottomSheetDialog(this)
+        dialog.setContentView(R.layout.sheets_dialog)
+
+        val itemAsc = dialog.findViewById<LinearLayout>(R.id.item_asc)
+        val itemDesc = dialog.findViewById<LinearLayout>(R.id.item_desc)
+        val itemDateAsc = dialog.findViewById<LinearLayout>(R.id.item_date_asc)
+        val itemDateDesc = dialog.findViewById<LinearLayout>(R.id.item_date_desc)
+
+        itemAsc?.setOnClickListener {
+            observeData(TaskOrderByEnum.NAME_ASC)
+            dialog.dismiss()
+        }
+        itemDesc?.setOnClickListener {
+            observeData(TaskOrderByEnum.NAME_DESC)
+            dialog.dismiss()
+        }
+        itemDateAsc?.setOnClickListener {
+            observeData(TaskOrderByEnum.DATE_ASC)
+            dialog.dismiss()
+        }
+        itemDateDesc?.setOnClickListener {
+            observeData(TaskOrderByEnum.DATE_DESC)
+            dialog.dismiss()
+        }
+        dialog.setCancelable(true)
+        dialog.show()
     }
 }
