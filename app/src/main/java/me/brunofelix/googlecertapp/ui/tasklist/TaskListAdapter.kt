@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.brunofelix.googlecertapp.data.Task
 import me.brunofelix.googlecertapp.databinding.ItemTaskBinding
+import me.brunofelix.googlecertapp.utils.convertFromTimestamp
 
 class TaskListAdapter : PagingDataAdapter<Task, TaskListAdapter.TaskListViewHolder>(DIFF_CALLBACK) {
 
@@ -46,7 +47,7 @@ class TaskListAdapter : PagingDataAdapter<Task, TaskListAdapter.TaskListViewHold
         fun bind(task: Task) {
             binding.tvName.text = task.name
             binding.tvState.text = task.state
-            binding.tvDate.text = "2022-07-03"
+            binding.tvDate.text = convertFromTimestamp(task.date)
             binding.layoutRoot.setOnClickListener {
                 listener?.onTaskClick(task.id)
             }

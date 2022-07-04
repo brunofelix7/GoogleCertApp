@@ -3,7 +3,7 @@ package me.brunofelix.googlecertapp.utils
 object AppConstants {
 
     // TODO: Patterns
-    const val PATTERN_MM_DD_YYYY_K_MM_A = "MM-dd-yyyy K:mm a"
+    const val PATTERN_MM_DD_YYYY_K_MM_A = "MM-dd-yyyy HH:mm a"
     const val PATTERN_H_MM_A = "h:mm a"
 
     // TODO: Messages

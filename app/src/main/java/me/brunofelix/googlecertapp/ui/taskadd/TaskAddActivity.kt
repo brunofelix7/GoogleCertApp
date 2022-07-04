@@ -86,6 +86,6 @@ class TaskAddActivity : AppCompatActivity() {
             view.snackbar(AppConstants.FORM_SUBMIT_ERROR)
             return
         }
-        viewModel.addTask(Task(name = taskName))
+        viewModel.addTask(Task(name = taskName, date = System.currentTimeMillis()))
     }
 }

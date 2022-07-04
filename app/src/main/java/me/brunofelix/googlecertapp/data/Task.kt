@@ -18,4 +18,8 @@ data class Task(
 
     @ColumnInfo(name = "state")
     val state: String = TaskEnum.TODO.name,
+
+    @ColumnInfo(name = "date")
+    val date: Long
+
 ) : Parcelable

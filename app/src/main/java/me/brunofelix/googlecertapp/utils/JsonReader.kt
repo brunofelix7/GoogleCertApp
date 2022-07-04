@@ -23,8 +23,9 @@ object JsonReader {
             val id = task.getLong("id")
             val name = task.getString("name")
             val state = task.getString("state")
+            val date = task.getLong("date")
 
-            tasksList.add(Task(id, name, state))
+            tasksList.add(Task(id, name, state, date))
         }
         return tasksList
     }

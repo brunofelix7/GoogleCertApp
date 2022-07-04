@@ -92,7 +92,12 @@ class TaskDetailsActivity : AppCompatActivity() {
             return
         }
 
-        viewModel.updateTask(Task(id = task.id, name = taskName, state = taskState))
+        viewModel.updateTask(Task(
+            id = task.id,
+            name = taskName,
+            state = taskState,
+            date = System.currentTimeMillis()
+        ))
     }
 
     private fun deleteDialog() {
