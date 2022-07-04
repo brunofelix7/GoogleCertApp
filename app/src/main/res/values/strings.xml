@@ -10,6 +10,10 @@
     <string name="title_action_filter">Sort by</string>
     <string name="title_action_settings">Settings</string>
 
+    <!-- TODO: Drawer menu -->
+    <string name="nav_drawer_open">Open navigation drawer</string>
+    <string name="nav_drawer_close">Close navigation drawer</string>
+
     <!-- TODO: TaskListActivity texts -->
     <string name="txt_btn_retry">Retry</string>
 

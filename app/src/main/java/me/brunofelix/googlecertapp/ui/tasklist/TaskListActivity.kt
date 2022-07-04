@@ -2,7 +2,9 @@ package me.brunofelix.googlecertapp.ui.tasklist
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -62,6 +64,32 @@ class TaskListActivity : AppCompatActivity(), TaskListClickListener {
                 }
                 else -> false
             }
+        }
+
+        val toggle = ActionBarDrawerToggle(this, binding.drawer, binding.toolbar,
+        R.string.nav_drawer_open, R.string.nav_drawer_close)
+        binding.drawer.addDrawerListener(toggle)
+        toggle.syncState()
+
+        binding.navView.setNavigationItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.nav_add -> {
+                    startActivity(Intent(this, TaskAddActivity::class.java))
+                }
+                R.id.nav_settings -> {
+                    // TODO: SettingsActivity
+                }
+            }
+            binding.drawer.closeDrawer(GravityCompat.START)
+            true
+        }
+    }
+
+    override fun onBackPressed() {
+        if (binding.drawer.isDrawerOpen(GravityCompat.START)) {
+            binding.drawer.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
         }
     }
 
