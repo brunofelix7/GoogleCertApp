@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.brunofelix.googlecertapp.data.Task
 import me.brunofelix.googlecertapp.data.TaskRepository
+import me.brunofelix.googlecertapp.extensions.scheduleWorker
 import me.brunofelix.googlecertapp.utils.AppConstants
 import me.brunofelix.googlecertapp.utils.AppProvider
 
@@ -26,7 +27,11 @@ class TaskAddViewModel constructor(
         _liveData.value = TaskAddUiState.Loading
 
         viewModelScope.launch(dispatcher) {
-            if (repository.insert(task) > 0) {
+            val result = repository.insert(task)
+
+            if (result > 0) {
+                provider.context().scheduleWorker(task = task, workerTag = result)
+
                 withContext(Dispatchers.Main) {
                     _liveData.value = TaskAddUiState.Success(AppConstants.SUCCESS_ADD)
                 }

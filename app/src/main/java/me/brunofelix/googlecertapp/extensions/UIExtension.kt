@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
+import me.brunofelix.googlecertapp.utils.MaskUtil
 
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
@@ -22,3 +24,8 @@ fun Activity.hideKeyboard() {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
+
+fun EditText.myCustomMask(mask: String) {
+    addTextChangedListener(MaskUtil(this, mask))
+}
+

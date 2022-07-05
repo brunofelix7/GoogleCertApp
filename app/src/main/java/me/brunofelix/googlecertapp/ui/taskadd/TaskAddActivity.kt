@@ -25,6 +25,7 @@ import me.brunofelix.googlecertapp.extensions.toast
 import me.brunofelix.googlecertapp.utils.AppConstants
 import me.brunofelix.googlecertapp.utils.AppProvider
 import me.brunofelix.googlecertapp.utils.convertToTimestamp
+import me.brunofelix.googlecertapp.utils.getDuration
 import java.util.*
 
 class TaskAddActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
@@ -138,8 +139,10 @@ class TaskAddActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
             return
         }
 
-        val date = "$taskDate $taskTime"
-        viewModel.addTask(Task(name = taskName, date = convertToTimestamp(date)))
+        val date = convertToTimestamp("$taskDate $taskTime")
+        val duration = getDuration(date)
+
+        viewModel.addTask(Task(name = taskName, date = date, duration = duration))
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {

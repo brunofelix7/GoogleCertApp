@@ -20,6 +20,9 @@ data class Task(
     val state: String = TaskStatusEnum.TODO.name,
 
     @ColumnInfo(name = "date")
-    val date: Long
+    val date: Long,
+
+    @ColumnInfo(name = "duration")
+    val duration: Long = 0
 
 ) : Parcelable

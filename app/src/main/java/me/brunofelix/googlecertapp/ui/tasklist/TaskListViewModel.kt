@@ -14,7 +14,7 @@ import me.brunofelix.googlecertapp.data.Task
 import me.brunofelix.googlecertapp.data.TaskOrderByEnum
 import me.brunofelix.googlecertapp.data.TaskRepository
 import me.brunofelix.googlecertapp.utils.AppProvider
-import me.brunofelix.googlecertapp.utils.JsonReader
+import me.brunofelix.googlecertapp.utils.JsonReaderUtil
 
 class TaskListViewModel constructor(
     private val repository: TaskRepository,
@@ -31,7 +31,7 @@ class TaskListViewModel constructor(
                     putBoolean(provider.res().getString(R.string.pref_is_db_empty), false)
                     apply()
                 }
-                for (task in JsonReader.getDataFromJson(provider.context())) {
+                for (task in JsonReaderUtil.getDataFromJson(provider.context())) {
                     repository.insert(task)
                 }
             }

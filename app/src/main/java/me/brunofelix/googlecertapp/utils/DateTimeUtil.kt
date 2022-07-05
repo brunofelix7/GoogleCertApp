@@ -1,7 +1,5 @@
 package me.brunofelix.googlecertapp.utils
 
-import me.brunofelix.googlecertapp.BuildConfig
-import timber.log.Timber
 import java.sql.Time
 import java.sql.Timestamp
 import java.text.Format
@@ -58,8 +56,3 @@ fun getTime(hr: Int, min: Int): String? {
     }
 }
 
-fun initDebugLog() {
-    if (BuildConfig.DEBUG) {
-        Timber.plant(Timber.DebugTree())
-    }
-}

@@ -38,6 +38,11 @@
     <string name="title_dialog_delete">Delete task</string>
     <string name="msg_dialog_delete">Are you sure you want to delete %s?</string>
 
+    <!-- TODO: WorkerManager keys -->
+    <string name="key_worker_tag">WORKER_TAG</string>
+    <string name="key_task_name">TASK_NAME</string>
+    <string name="key_task_obj">TASK_OBJ</string>
+
     <!-- TODO: Accessibility -->
     <string name="float_add">Float add</string>
 </resources>

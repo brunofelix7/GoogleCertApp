@@ -11,7 +11,7 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-object JsonReader {
+object JsonReaderUtil {
 
     fun getDataFromJson(context: Context): List<Task> {
         val tasksJson = loadJsonArray(context)
