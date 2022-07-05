@@ -36,11 +36,6 @@ class TaskAddActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
     private var date: String? = null
     private var time: String? = null
 
-    companion object {
-        private const val CALENDAR_MASK = "##-##-####"
-        private const val CLOCK_MASK = "##:##"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initUI()
@@ -57,8 +52,8 @@ class TaskAddActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         binding.toolbar.inflateMenu(R.menu.add_menu)
         binding.toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_arrow_back)
 
-        binding.inputDate.myCustomMask(CALENDAR_MASK)
-        binding.inputTime.myCustomMask(CLOCK_MASK)
+        binding.inputDate.myCustomMask(AppConstants.DATE_MASK)
+        binding.inputTime.myCustomMask(AppConstants.TIME_MASK)
 
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
