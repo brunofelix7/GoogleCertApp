@@ -3,11 +3,15 @@ package me.brunofelix.googlecertapp.utils
 object AppConstants {
 
     // TODO: Patterns
-    const val PATTERN_MM_DD_YYYY_K_MM_A = "MM-dd-yyyy HH:mm a"
+    const val PATTERN_MM_DD_YYYY_K_MM_A = "MM-dd-yyyy k:mm a"
+    const val PATTERN_MM_DD_YYYY_HH_MM = "MM-dd-yyyy HH:mm"
     const val PATTERN_H_MM_A = "h:mm a"
 
     // TODO: Messages
-    const val FORM_SUBMIT_ERROR = "Field is required"
+    const val FORM_SUBMIT_ERROR = "Fields are required"
+    const val FIELD_NAME_ERROR = "Name is required"
+    const val FIELD_DATE_ERROR = "Date is required"
+    const val FIELD_TIME_ERROR = "Time is required"
     const val UNKNOWN_ERROR: String = "Unknown"
     const val GENERIC_ERROR: String = "Oops! Try again"
     const val NOT_FOUND_ERROR: String = "Task not found"

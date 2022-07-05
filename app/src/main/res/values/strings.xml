@@ -21,6 +21,8 @@
     <!-- TODO: TaskAddActivity texts -->
     <string name="add_task">Add new task</string>
     <string name="name">Task name</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
     <string name="save">Save</string>
 
     <!-- TODO: TaskAddActivity texts -->

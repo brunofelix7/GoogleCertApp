@@ -26,8 +26,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- TODO: Input Task Name -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_name"
+        android:id="@+id/input_layout_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,60 +42,68 @@
         app:layout_constraintTop_toBottomOf="@+id/app_bar">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_name"
+            android:id="@+id/input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
+    <!-- TODO: Input Date -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_due_date"
+        android:id="@+id/input_layout_date"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:hint="Date"
+        android:hint="@string/date"
         app:errorEnabled="true"
         app:expandedHintEnabled="false"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_name">
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_name">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_due_date"
+            android:id="@+id/input_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Ex: 01-01-2022"
             android:inputType="date" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- TODO: Input Time -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_due_time"
+        android:id="@+id/input_layout_time"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Time"
+        android:hint="@string/time"
         app:errorEnabled="true"
         app:expandedHintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/til_name">
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_name">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_due_time"
+            android:id="@+id/input_time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Ex: 12:00"
             android:inputType="time" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <Button
         android:id="@+id/btn_save"
@@ -106,7 +115,7 @@
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_due_time" />
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_time" />
 
     <ProgressBar
         android:id="@+id/progress_bar"

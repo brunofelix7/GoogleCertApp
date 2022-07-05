@@ -22,7 +22,7 @@ fun convertFromTimestamp(timeStamp: Long): String {
 
 fun convertToTimestamp(date: String): Long {
     return try {
-        val sdf = SimpleDateFormat(AppConstants.PATTERN_MM_DD_YYYY_K_MM_A, Locale.ENGLISH)
+        val sdf = SimpleDateFormat(AppConstants.PATTERN_MM_DD_YYYY_HH_MM, Locale.ENGLISH)
         val parsedDate = sdf.parse(date) ?: return 0
         Timestamp(parsedDate.time).time
     } catch (e: Exception) {

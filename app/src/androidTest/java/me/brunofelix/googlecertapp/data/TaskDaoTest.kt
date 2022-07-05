@@ -30,7 +30,7 @@ class TaskDaoTest {
     @Test
     fun insertTest() = runTest {
         // Given
-        val task = Task(name = "Todo test")
+        val task = Task(name = "Todo test", date = System.currentTimeMillis())
 
         // When
         dao.insert(task)
@@ -43,7 +43,7 @@ class TaskDaoTest {
     @Test
     fun deleteTest() = runTest {
         // Given
-        val task = Task(name = "Todo test")
+        val task = Task(name = "Todo test", date = System.currentTimeMillis())
 
         // When
         dao.insert(task)
@@ -59,7 +59,7 @@ class TaskDaoTest {
     @Test
     fun findByIdTest() = runTest {
         // Given
-        val task = Task(name = "Todo test")
+        val task = Task(name = "Todo test", date = System.currentTimeMillis())
 
         // When
         dao.insert(task)
