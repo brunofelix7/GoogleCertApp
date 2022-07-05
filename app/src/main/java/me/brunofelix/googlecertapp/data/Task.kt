@@ -17,7 +17,7 @@ data class Task(
     val name: String,
 
     @ColumnInfo(name = "state")
-    val state: String = TaskEnum.TODO.name,
+    val state: String = TaskStatusEnum.TODO.name,
 
     @ColumnInfo(name = "date")
     val date: Long

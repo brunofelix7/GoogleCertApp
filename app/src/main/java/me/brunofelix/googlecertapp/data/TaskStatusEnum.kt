@@ -1,5 +1,5 @@
 package me.brunofelix.googlecertapp.data
 
-enum class TaskEnum {
+enum class TaskStatusEnum {
     TODO, PROGRESS, DONE
 }

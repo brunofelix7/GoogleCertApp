@@ -14,23 +14,20 @@ import kotlinx.coroutines.launch
 import me.brunofelix.googlecertapp.R
 import me.brunofelix.googlecertapp.data.AppDatabase
 import me.brunofelix.googlecertapp.data.Task
-import me.brunofelix.googlecertapp.data.TaskEnum
+import me.brunofelix.googlecertapp.data.TaskStatusEnum
 import me.brunofelix.googlecertapp.data.TaskRepositoryImpl
 import me.brunofelix.googlecertapp.databinding.ActivityTaskDetailsBinding
 import me.brunofelix.googlecertapp.extensions.snackbar
 import me.brunofelix.googlecertapp.extensions.toast
-import me.brunofelix.googlecertapp.ui.taskadd.TaskAddViewModel
-import me.brunofelix.googlecertapp.ui.taskadd.TaskAddViewModelFactory
 import me.brunofelix.googlecertapp.utils.AppConstants
 import me.brunofelix.googlecertapp.utils.AppProvider
-import timber.log.Timber
 
 class TaskDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTaskDetailsBinding
     private lateinit var viewModel: TaskDetailsViewModel
     private lateinit var task: Task
-    private lateinit var stateAdapter: ArrayAdapter<TaskEnum>
+    private lateinit var stateAdapter: ArrayAdapter<TaskStatusEnum>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +58,7 @@ class TaskDetailsActivity : AppCompatActivity() {
             }
         }
 
-        stateAdapter = ArrayAdapter(this, R.layout.dropdown_menu_popup_item, TaskEnum.values())
+        stateAdapter = ArrayAdapter(this, R.layout.dropdown_menu_popup_item, TaskStatusEnum.values())
 
         binding.autoDropdownState.setAdapter(stateAdapter)
 

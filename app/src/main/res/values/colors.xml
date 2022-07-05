@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#6F6F6F</color>
+    <color name="blue_700">#1976d2</color>
+    <color name="yellow_700">#fbc02d</color>
+    <color name="green_700">#689f38</color>
 
     <!-- Night colors -->
     <color name="night_primary">#FF121212</color> <!-- FF2A3251 -->
