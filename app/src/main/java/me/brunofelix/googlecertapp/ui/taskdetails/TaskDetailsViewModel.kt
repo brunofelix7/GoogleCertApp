@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.brunofelix.googlecertapp.data.Task
 import me.brunofelix.googlecertapp.data.TaskRepository
+import me.brunofelix.googlecertapp.extensions.cancelNotification
 import me.brunofelix.googlecertapp.extensions.cancelWorker
 import me.brunofelix.googlecertapp.extensions.scheduleWorker
 import me.brunofelix.googlecertapp.utils.AppConstants
@@ -47,7 +48,8 @@ class TaskDetailsViewModel constructor(
             val result = repository.insert(task)
 
             if (result > 0) {
-                provider.context().cancelWorker(workerTag = result)
+                provider.context().cancelNotification(notificationId = task.id.toInt())
+                provider.context().cancelWorker(workerTag = task.id)
                 provider.context().scheduleWorker(task = task, workerTag = result)
 
                 withContext(Dispatchers.Main) {
@@ -68,6 +70,7 @@ class TaskDetailsViewModel constructor(
             repository.delete(task)
 
             provider.context().cancelWorker(workerTag = task.id)
+            provider.context().cancelNotification(notificationId = task.id.toInt())
 
             withContext(Dispatchers.Main) {
                 _liveData.value = TaskDetailsUiState.OnDeleted

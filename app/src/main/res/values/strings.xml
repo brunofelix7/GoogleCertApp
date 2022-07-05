@@ -43,6 +43,12 @@
     <string name="key_task_name">TASK_NAME</string>
     <string name="key_task_obj">TASK_OBJ</string>
 
+    <!-- TODO: Notifications -->
+    <string name="channel_id">me.brunofelix.googlecertapp</string>
+    <string name="channel_name">Google Android Certification</string>
+    <string name="channel_description">Notifies the schedule of created tasks.</string>
+    <string name="notification_content">Do not forget! Let\'\s get it DONE</string>
+
     <!-- TODO: Accessibility -->
     <string name="float_add">Float add</string>
 </resources>
