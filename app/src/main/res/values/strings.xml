@@ -1,6 +1,6 @@
 <resources>
     <!-- TODO: App name -->
-    <string name="app_name">Google Android Certification</string>
+    <string name="app_name">Google Certification</string>
 
     <!-- TODO: Preferences keys -->
     <string name="pref_is_db_empty">key_is_db_empty</string>

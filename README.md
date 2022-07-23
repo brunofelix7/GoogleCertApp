@@ -21,7 +21,10 @@ App para treinamento de tecnologias requeridas para a prova de certificação.
 - Preferences
 - Tests (JUnit Test, Espresso UI Test, Dao, ViewModel, Repository)
 - Populate database from raw (JSON)
-- Localize
 - DatePicker / TimePicker
 - WorkManager
 - Notification
+
+- Dagger Hilt
+- Widget
+- Localize
